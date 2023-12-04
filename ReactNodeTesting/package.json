@@ -13,11 +13,7 @@
     "morgan": "^1.10.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
-<<<<<<< HEAD
-    "react-scripts": "^5.0.0",
-=======
     "react-scripts": "^5.0.1",
->>>>>>> d5f9180e0a8d832bbc6a226bb03f0bbca935228e
     "response-time": "^2.3.2",
     "web-vitals": "^2.1.4"
   },
