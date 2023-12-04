@@ -75,31 +75,3 @@ jobs:
           script: |
             cd ReactNodeTesting
             npm install
-
-      # notifying the QA and the Developer on workflow sucess.
-      - name: Notify on success
-        if: success()
-        uses: dawidd6/action-send-mail@v3
-        with:
-          connection_url: ${{secrets.MAIL_CONNECTION}}
-          server_address: smtp.gmail.com
-          server_port: 465
-          secure: true
-          subject: Github Action Sucess
-          to: habdullahfarooq@gmail.com
-          from: habdullahfarooq@gmail.com
-          body: Workflow of ${{github.repository}} initiated by ${{github.actor}} was sucessfully executed. View the changes on the server http://172.31.45.223/
-
-      # notifying the QA and the Developer on workflow sucess.
-      - name: Notify on Failure
-        if: failure()
-        uses: dawidd6/action-send-mail@v3
-        with:
-          connection_url: ${{secrets.MAIL_CONNECTION}}
-          server_address: smtp.gmail.com
-          server_port: 465
-          secure: true
-          subject: Github Action Failure
-          to: habdullahfarooq@gmail.com
-          from: habdullahfarooq@gmail.com
-          body: Workflow of ${{github.repository}} initiated by ${{github.actor}} failed, kindly check the workflow logs!
