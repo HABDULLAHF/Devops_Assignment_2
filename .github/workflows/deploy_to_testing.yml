@@ -6,6 +6,8 @@ run-name: ${{github.actor}} initiated the workflow - Deploy To Testing
 
 # when to trigger the workflow
 on:
+  push:
+    - master
   pull_request:
     branches:
       - master
