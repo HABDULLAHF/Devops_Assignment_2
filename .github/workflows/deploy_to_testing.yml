@@ -42,7 +42,8 @@ jobs:
       - name: Building Project
         run:  |
           cd ReactNodeTesting
-          PATH="./node_modules/.bin:$PATH" npm run build-react
+          npm install react-scripts --save
+          npm run build-react
 
       # running unit tests on the application
       - name: Testing The Project
