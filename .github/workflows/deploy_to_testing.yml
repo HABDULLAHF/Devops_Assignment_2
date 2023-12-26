@@ -56,13 +56,13 @@ jobs:
           cd ReactNodeTesting
           npx eslint src/sum.js src/cartview.js src/shippingOptions.js
 
-      # Deploy All Changes To The Testing Server
+      # Deploy Changes To The Testing Server
       - name: Deploy To Changes To Testing Server
         uses: burnett01/rsync-deployments@6.0.0
         with:
           switches: -avzr --delete
           path: ./*
-          remote_path: ~/
+          remote_path: ~/Devops_Assignment_2
           remote_host: ec2-3-86-57-58.compute-1.amazonaws.com
           remote_user: ubuntu
           remote_key: ${{ secrets.SSH_KEY }}
