@@ -89,10 +89,6 @@ jobs:
           
           secure: true
 
-          username: ${{secrets.MAIL_USERNAME}}
-          # Optional (recommended) mail server password:
-          password: ${{secrets.MAIL_PASSWORD}}
-
           subject: Deployment Test Success
           to: habdullahfarooq@gmail.com
           from: habdullahfarooq@gmail.com
