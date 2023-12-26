@@ -58,8 +58,8 @@ jobs:
         with:
           switches: -avzr --delete
           path: ./*
-          remote_path: ~/
-          remote_host: 52.90.50.116
+          remote_path: ~/Devops_Assignment_2
+          remote_host: ${{ secrets.STAGING_SERVER }}
           remote_user: ubuntu
           remote_key: ${{ secrets.SSH_KEY }}
 
@@ -67,7 +67,7 @@ jobs:
       - name: Installing Node Modules
         uses: appleboy/ssh-action@v1.0.0
         with:
-          host: 52.90.50.116
+          host: ${{ secrets.STAGING_SERVER }}
           username: ubuntu
           key: ${{ secrets.SSH_KEY }}
           port: 22
@@ -80,25 +80,32 @@ jobs:
         if: success()
         uses: dawidd6/action-send-mail@v3
         with:
-          connection_url: ${{secrets.MAIL_CONNECTION}}
           server_address: smtp.gmail.com
           server_port: 465
+          
           secure: true
-          subject: Github Action Sucess
+
+          username: ${{secrets.MAIL_USERNAME}}
+          # Optional (recommended) mail server password:
+          password: ${{secrets.MAIL_PASSWORD}}
+          
+          subject: Deployment Test Success
           to: habdullahfarooq@gmail.com
           from: habdullahfarooq@gmail.com
-          body: Workflow of ${{github.repository}} initiated by ${{github.actor}} was sucessfully executed. View the changes on the server http://52.90.50.116/
+          body: Workflow of ${{github.repository}} initiated by ${{github.actor}} was sucessfully executed. View the changes on the server ${{ secrets.STAGING_SERVER }}
 
       # notifying the QA and the Developer on workflow sucess.
       - name: Notify on Failure
         if: failure()
         uses: dawidd6/action-send-mail@v3
         with:
-          connection_url: ${{secrets.MAIL_CONNECTION}}
           server_address: smtp.gmail.com
           server_port: 465
           secure: true
-          subject: Github Action Failure
+          username: ${{secrets.MAIL_USERNAME}}
+          # Optional (recommended) mail server password:
+          password: ${{secrets.MAIL_PASSWORD}}
+          subject: Test Failure
           to: habdullahfarooq@gmail.com
           from: habdullahfarooq@gmail.com
           body: Workflow of ${{github.repository}} initiated by ${{github.actor}} failed, kindly check the workflow logs!
