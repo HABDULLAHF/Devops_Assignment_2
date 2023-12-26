@@ -72,7 +72,7 @@ jobs:
           key: ${{ secrets.SSH_KEY }}
           port: 22
           script: |
-            cd React_App
+            cd ReactNodeTesting
             npm install
 
       # notifying the QA and the Developer on workflow sucess.
