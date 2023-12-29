@@ -2,9 +2,6 @@ name: Deploy To Testing Server
 
 # when to trigger the workflow
 on: 
-  push:
-    branches:
-      - master
   pull_request:
     branches: 
       - master
